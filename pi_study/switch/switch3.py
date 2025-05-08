@@ -1,17 +1,17 @@
 import RPi.GPIO as gpio
-from time import sleep
+from time import sleep, time
 
 gpio.setmode(gpio.BCM)
 
 class Led:
     
     def __init__(self, pin, color):
-        self.pip = pip
+        self.pin = pin
         self.color = color
         gpio.setup(self.pin, gpio.OUT)
         gpio.output(self.pin, gpio.LOW)
         
-    def blink(self, color):
+    def blink(self, count):
         for _ in range(count):
             gpio.output(self.pin, gpio.HTGH)
             sleep(time)
