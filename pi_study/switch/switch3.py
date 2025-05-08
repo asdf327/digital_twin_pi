@@ -1,3 +1,5 @@
+from threading import Thread
+
 import RPi.GPIO as gpio
 from time import sleep
 
@@ -49,7 +51,10 @@ leds = (Led(16, "RED"), Led(21, "GREEN"))
 
 
 def ledRedFunction():
-    leds[0].blink(10, 0.5)
+    def threadRun():
+        leds[0].blink(10, 0.5)
+    thread = Thread(target=threadRun, daemon=True)
+    thread.start()
 
 
 greenLedState = False
