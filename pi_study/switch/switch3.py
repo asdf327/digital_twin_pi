@@ -42,7 +42,7 @@ class Button:
     def checkPressed(self, currentState):
         return currentState == gpio.HIGH and self.prevState == gpio.LOW
 
-leds = (Led(16, "RED"), Led(21, "GREEN"), Led())
+leds = (Led(16, "RED"), Led(21, "GREEN"))
 
 def ledRedFunction():
     leds[0].blink(10, 0.5)
