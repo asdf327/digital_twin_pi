@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import time
 
-button_pin = 13  # 버튼이 연결된 핀
+button_pin = 20  # 버튼이 연결된 핀
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
