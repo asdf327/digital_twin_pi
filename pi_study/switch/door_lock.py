@@ -12,12 +12,15 @@ class ButtonListener(threading.Thread):
         GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
     def run(self):
-        while True:
-            if GPIO.input(self.pin) == GPIO.LOW:
-                self.queue.put(self.index + 1)
-                while GPIO.input(self.pin) == GPIO.LOW:
-                    time.sleep(0.05)
-                time.sleep(0.1)
+        print("🔑 비밀번호를 입력하세요...")
+        input_sequence = []
+        while len(input_sequence) < 3:
+            if not self.queue.empty():
+                value = self.queue.get()
+                print(f"입력: {value}")
+                input_sequence.append(value)
+
+        print(f"입력된 비밀번호: {input_sequence}")
 
 class LEDController:
     def __init__(self, pins):
